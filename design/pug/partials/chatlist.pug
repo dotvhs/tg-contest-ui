@@ -1,0 +1,45 @@
+mixin person(badge)
+  .person.rp&attributes(attributes)
+    .avatar
+    .content
+      .top
+        .title Alicia Torreaux
+        .status.tgico
+        .time 13:02
+      .bottom
+        .message Bob says hi.
+        .badge.tgico= badge
+
+
+.toolbar
+  .btn-icon.rp.rps.tgico-menu
+  .search
+    .input-search
+      input(type="text" placeholder="Search")
+      span.tgico.tgico-search
+
+.list.pinned
+  +person(class="read")
+  +person(2)(class="online")
+.list
+  +person(class="sent")
+  +person(20)(class="muted")
+  +person(20)(class="group")
+  +person(class="sent")
+  +person(20)(class="muted")
+  +person(20)(class="group")
+  +person(class="sent")
+  +person(20)(class="muted")
+  +person(20)(class="group")
+  +person(class="sent")
+  +person(20)(class="muted")
+  +person(20)(class="group")
+  +person(class="sent")
+  +person(20)(class="muted")
+  +person(20)(class="group")
+  +person(class="sent")
+  +person(20)(class="muted")
+  +person(20)(class="group")
+  +person(class="sent")
+  +person(20)(class="muted")
+  +person(20)(class="group")

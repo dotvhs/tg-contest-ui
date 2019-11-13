@@ -1,0 +1,80 @@
+mixin status(text)
+  .service-msg= text
+
+mixin bubble(text, status="read")
+  .bubble(class=status)
+    if block
+      block
+    if text
+      .message= text
+        span.time 
+          .inner.tgico 16:38
+
+mixin linkbubble(text, status="read")
+  .bubble(class=status)
+    .message
+      a(href="https://google.com")= text
+      span.time 
+        .inner.tgico 16:38
+    if block
+      block
+
+mixin reply(name, text)
+  .box.rp
+    .quote
+      .name= name
+      .text= text
+
+mixin web(url, name, title, text)
+  .box.web.rp
+    .quote
+      .preview(style="background-image: url("+ url +")")
+      .name= name
+      .title= title
+      .text= text
+
+mixin attach(url)
+  .attachment(style="background-image: url("+ url +")")
+
+#topbar
+  .chat-info
+    .person
+      .avatar
+      .content
+        .top
+          .title Campus Party
+        .bottom
+          .info 2,500 members, 746 online
+  .pinned-msg
+  .btn-icon.rp.rps.tgico-search
+  .btn-icon.rp.rps.tgico-more
+#bubbles
+  #bubbles-inner
+    .service
+      +status("October 21")
+    .in
+      +bubble("Hold on, there it is.")
+        +attach("/img/photo.jpg")
+    .out
+      +bubble("Hello!")
+      +bubble("Does anyone have a photo of party balloons?")
+      +bubble("Hello! Does anyone have a photo of party balloons? One two three")
+    .in
+      +bubble("Hello!")
+      +bubble("Does anyone have a photo of party balloons?")
+      +bubble("Hello! Does anyone have a photo of party balloons?")
+    .out
+      +bubble("Hello!")
+    .in
+      +bubble("Wow!", "read")
+        +reply("Name", "They stick together!")
+      +bubble("heyyyyy!")
+    .out
+      +bubble("Wow!", "read")
+        +reply("Name", "They stick together!")
+      +bubble
+        +attach("/img/photo.jpg")
+      +bubble("Hello! Does anyone have a photo of party balloons?", "sent")
+    .in
+      +linkbubble("https://www.forbes.com/4dfe050c1e62")
+        +web("https://specials-images.forbesimg.com/imageserve/1162776527/960x0.jpg", "Forbes", "The New Campus Deplorables ", "Academic traditionalists at the National Association of Scholars and elsewhere appropriately challenge the overwhelmingly leftish culture of modern universities.")
